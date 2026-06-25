@@ -20,7 +20,7 @@ public class DemoController {
     // 普通请求：POST /api/deepseek/chat
     @PostMapping("/chat")
     public Mono<ChatResponse> chat(@RequestBody Map<String, String> request) {//Mono一般用于返回单个值，异步请求
-        String message = request.get("message");
+        String message = request.get("message");//request只是一个变量名，不是请求体
         return deepSeekService.chat(message);
     }
 
