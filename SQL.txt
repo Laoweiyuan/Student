@@ -1,0 +1,15 @@
+创造百万条测试数据
+TRUNCATE TABLE student;
+SET SESSION cte_max_recursion_depth = 1000000;
+INSERT INTO student (id, name, sex, age)
+WITH RECURSIVE seq(n) AS (
+    SELECT 1
+    UNION ALL
+    SELECT n + 1 FROM seq WHERE n < 1000000
+)
+SELECT
+    n AS id,
+    CONCAT('student_', n) AS name,
+    FLOOR(1 + RAND(n) * 2) AS sex,
+    FLOOR(18 + RAND(n + 1) * 32) AS age
+FROM seq;
