@@ -26,7 +26,7 @@ public class DemoController {
 
     // 流式请求：POST /api/deepseek/chat/stream
     // 注意：返回 text/event-stream
-    @PostMapping(value = "/chat/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @PostMapping(value = "/chat/stream", produces = "text/event-stream")
     public Flux<String> chatStream(@RequestBody Map<String, String> request) {
         String message = request.get("message");
         return deepSeekService.chatStream(message);
