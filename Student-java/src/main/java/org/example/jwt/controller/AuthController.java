@@ -34,10 +34,11 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody User userinfo) {//1.通过JSON的形式接收用户名和密码
         User user = userService.login(userinfo.getUsername(), userinfo.getPassword());//12.调用UserService的login方法进行登录验证
         if (user == null) {
-            return ResponseEntity.status(401).body("用户名或密码错误");//12.如果user为空，返回401状态码和错误信息
-
+            return ResponseEntity.status(401).body(Result.error(401,"用户名或密码错误"));
+            //12.返回HTTP401状态码和code：401,msg："用户名或密码错误"
         }
-        String token = jwtUtil.generateToken(userinfo.getUsername());//13.如果user不为空，调用JwtUtil的generateToken方法生成JWT token
+        String token = jwtUtil.generateToken(userinfo.getUsername());
+        //13.如果user不为空，调用JwtUtil的generateToken方法生成JWT token
 //        Map<String, Object> result = new HashMap<>();//22.创建一个Map，用于存储token及用户信息返回结果，便于前端接收
 //        result.put("code", 200);
 //        result.put("msg", "登录成功");
