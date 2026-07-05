@@ -27,7 +27,7 @@ public class StudentServiceImpl implements StudentService {
     @Override//实现StudentService接口的方法
     public Student findSexService(String sex) {return studentMapper.findSexMapper(sex);}
     @Override
-    public PageResult<Student> pageByCursor(Long cursor, int size) {
+    public PageResult<Student> pageByCursor(Integer cursor, int size) {
         // 多查一条，用于判断是否有下一页
         List<Student> list = studentMapper.selectByCursor(cursor, size + 1);
 

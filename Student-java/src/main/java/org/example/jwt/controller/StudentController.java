@@ -27,7 +27,7 @@ public class StudentController {
     public Student findSex(@PathVariable String sex) {return studentService.findSexService(sex);}
     @GetMapping("/page")
     public PageResult<Student> page(
-            @RequestParam(defaultValue = "0") Long cursor,
+            @RequestParam(defaultValue = "0") Integer cursor,
             @RequestParam(defaultValue = "20") int size
     ) {
         return studentService.pageByCursor(cursor, size);

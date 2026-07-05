@@ -10,5 +10,5 @@ public interface StudentService {
     Student findByIdService(Integer id);
     List<Student> findByNameService(String name);
     Student findSexService(String sex);
-    PageResult<Student> pageByCursor(Long cursor, int size);
+    PageResult<Student> pageByCursor(Integer cursor, int size);
 }

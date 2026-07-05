@@ -19,5 +19,5 @@ public interface StudentMapper {
     @DS("Student")
     Student findSexMapper(String sex);
     @DS("Student")
-    List<Student> selectByCursor(Long cursor, Integer size);
+    List<Student> selectByCursor(Integer cursor, Integer size);
 }
