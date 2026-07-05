@@ -12,4 +12,16 @@
         SELECT id, name, age, sex
         FROM student
     </select>
+    <select id="findByIdMapper" resultMap="StudentResultMap">
+        SELECT id, name, age, sex
+        FROM student WHERE id = #{id}
+    </select>
+    <select id="findByNameMapper" resultMap="StudentResultMap">
+        SELECT id, name, age, sex
+        FROM student WHERE name = #{name}
+    </select>
+    <select id="findSexMapper" resultMap="StudentResultMap">
+        SELECT id, name, age, sex
+        FROM student WHERE sex = #{sex}
+    </select>
 </mapper>

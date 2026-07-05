@@ -10,4 +10,12 @@ import java.util.List;
 public interface StudentMapper {
     @DS("Student")
     List<Student> findAllMapper();
+
+    @DS("Student")
+    Student findByIdMapper(Integer id);
+
+    @DS("Student")
+    List<Student> findByNameMapper(String name);
+    @DS("Student")
+    Student findSexMapper(String sex);
 }

@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface StudentService {
     List<Student> findAllService();
+    Student findByIdService(Integer id);
+    List<Student> findByNameService(String name);
+    Student findSexService(String sex);
 }

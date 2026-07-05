@@ -25,4 +25,4 @@ mybatis:
 
 jwt:
   secret: ThisIsASecretKeyForJWT_MustBeLongEnough
-  expiration: 60000
+  expiration: 6000000

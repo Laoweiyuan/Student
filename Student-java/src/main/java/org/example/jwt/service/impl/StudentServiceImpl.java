@@ -18,4 +18,11 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAllService() {
         return studentMapper.findAllMapper();
     }
+
+    @Override//实现StudentService接口的方法
+    public Student findByIdService(Integer id) {return studentMapper.findByIdMapper(id);}
+    @Override//实现StudentService接口的方法
+    public List<Student> findByNameService(String name) {return studentMapper.findByNameMapper(name);}
+    @Override//实现StudentService接口的方法
+    public Student findSexService(String sex) {return studentMapper.findSexMapper(sex);}
 }
