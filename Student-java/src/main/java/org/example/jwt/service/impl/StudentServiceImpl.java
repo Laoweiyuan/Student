@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
         if (hasMore) {
             list = list.subList(0, size);
         }
-        Integer nextCursor = list.isEmpty() ? null : list.get(list.size() - 1).getId();
+        Long nextCursor = list.isEmpty() ? null : list.get(list.size() - 1).getId();
         return new PageResult<>(list, nextCursor, hasMore);
     }
 }

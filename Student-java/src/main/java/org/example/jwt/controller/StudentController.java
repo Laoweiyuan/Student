@@ -3,9 +3,12 @@ package org.example.jwt.controller;
 import org.example.jwt.entity.PageResult;
 import org.example.jwt.entity.Student;
 import org.example.jwt.service.StudentService;
+import org.example.jwt.service.impl.StudentImportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -34,5 +37,19 @@ public class StudentController {
             size = 100;
         }
         return studentService.pageByCursor(cursor, size);
+    }
+
+    @Autowired
+    private StudentImportService studentImportService;
+
+    @PostMapping("/import")
+    public String importStudents(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) return "文件为空";
+        try (InputStream is = file.getInputStream()) {
+            studentImportService.importFromExcel(is);
+            return "导入成功";
+        } catch (Exception e) {
+            return "导入失败：" + e.getMessage();
+        }
     }
 }
