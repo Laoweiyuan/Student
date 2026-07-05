@@ -30,6 +30,9 @@ public class StudentController {
             @RequestParam(defaultValue = "0") Integer cursor,
             @RequestParam(defaultValue = "20") int size
     ) {
+        if (size > 100){
+            size = 100;
+        }
         return studentService.pageByCursor(cursor, size);
     }
 }
