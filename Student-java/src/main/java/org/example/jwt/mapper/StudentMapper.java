@@ -18,4 +18,6 @@ public interface StudentMapper {
     List<Student> findByNameMapper(String name);
     @DS("Student")
     Student findSexMapper(String sex);
+    @DS("Student")
+    List<Student> selectByCursor(Long cursor, Integer size);
 }

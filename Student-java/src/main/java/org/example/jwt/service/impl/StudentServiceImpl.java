@@ -1,5 +1,6 @@
 package org.example.jwt.service.impl;
 
+import org.example.jwt.entity.PageResult;
 import org.example.jwt.entity.Student;
 import org.example.jwt.mapper.StudentMapper;
 import org.example.jwt.service.StudentService;
@@ -25,4 +26,16 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findByNameService(String name) {return studentMapper.findByNameMapper(name);}
     @Override//实现StudentService接口的方法
     public Student findSexService(String sex) {return studentMapper.findSexMapper(sex);}
+    @Override
+    public PageResult<Student> pageByCursor(Long cursor, int size) {
+        // 多查一条，用于判断是否有下一页
+        List<Student> list = studentMapper.selectByCursor(cursor, size + 1);
+
+        boolean hasMore = list.size() > size;
+        if (hasMore) {
+            list = list.subList(0, size);
+        }
+        Integer nextCursor = list.isEmpty() ? null : list.get(list.size() - 1).getId();
+        return new PageResult<>(list, nextCursor, hasMore);
+    }
 }

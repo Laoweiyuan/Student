@@ -1,5 +1,6 @@
 package org.example.jwt.controller;
 
+import org.example.jwt.entity.PageResult;
 import org.example.jwt.entity.Student;
 import org.example.jwt.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,11 @@ public class StudentController {
     public List<Student> findByName(@PathVariable String name) {return studentService.findByNameService(name);}
     @GetMapping("/find/sex/{sex}")
     public Student findSex(@PathVariable String sex) {return studentService.findSexService(sex);}
+    @GetMapping("/page")
+    public PageResult<Student> page(
+            @RequestParam(defaultValue = "0") Long cursor,
+            @RequestParam(defaultValue = "20") int size
+    ) {
+        return studentService.pageByCursor(cursor, size);
+    }
 }

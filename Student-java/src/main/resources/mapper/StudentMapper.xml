@@ -24,4 +24,11 @@
         SELECT id, name, age, sex
         FROM student WHERE sex = #{sex}
     </select>
+    <select id="selectByCursor" resultMap="StudentResultMap">
+        SELECT id, name, age, sex
+        FROM student
+        WHERE is_deleted = 0 AND id > #{cursor}
+        ORDER BY id ASC
+        LIMIT #{size}
+    </select>
 </mapper>
