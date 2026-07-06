@@ -31,6 +31,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);//放行
             return;//直接结束过滤，不继续处理后续过滤器
         }
+        if ("/auth/register".equals(request.getRequestURI()))//判断请求URI是否为注册接口的URI
+        {
+            filterChain.doFilter(request, response);//放行
+            return;//直接结束过滤，不继续处理后续过滤器
+        }
 
         String header = request.getHeader("Authorization");//获取Authorization头，header格式为"Bearer xxx.xxx.xxx"
         if (header != null && header.startsWith("Bearer "))//判断Authorization头是否存在且以"Bearer "开头

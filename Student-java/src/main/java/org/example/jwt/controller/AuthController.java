@@ -30,6 +30,12 @@ public class AuthController {
         return user;
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User userinfo) {
+        userService.register(userinfo);
+        return ResponseEntity.ok(Result.success());
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User userinfo) {//1.通过JSON的形式接收用户名和密码
         User user = userService.login(userinfo.getUsername(), userinfo.getPassword());//12.调用UserService的login方法进行登录验证

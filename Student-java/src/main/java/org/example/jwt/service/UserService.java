@@ -27,4 +27,18 @@ public class UserService {
         return null;//10.如果账号密码不匹配，返回null到login方法中，登录失败，AuthController返回null给前端
 
     }
+
+    public void register(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));//1.将用户密码加密后存储到数据库
+        if (userMapper.findByUsername(user.getUsername()) != null) {//判断用户名是否存在
+            throw new IllegalArgumentException("用户名已存在");
+        }
+        else if (user.getUsername() == null) {//判断用户名是否为空
+            throw new IllegalArgumentException("用户名不能为空");
+        }
+        else if (user.getPassword() == null) {//判断密码是否为空
+            throw new IllegalArgumentException("密码不能为空");
+        }
+        userMapper.insert(user);//2.调用mapper的insert方法将用户对象插入到数据库
+    }
 }
