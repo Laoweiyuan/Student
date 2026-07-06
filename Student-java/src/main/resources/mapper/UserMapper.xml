@@ -5,4 +5,7 @@
     <select id="findByUsername" resultType="org.example.jwt.entity.User">
         SELECT id, username, password FROM user WHERE username = #{username}
     </select>
+    <insert id="insert" parameterType="org.example.jwt.entity.User">
+        INSERT INTO user (username, password) VALUES (#{username}, #{password})
+    </insert>
 </mapper>
