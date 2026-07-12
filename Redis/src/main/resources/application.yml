@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    redis:
+      host: 192.168.33.128
+      port: 6379
+      password: tangmylp520
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3000   # 全局默认过期时间，单位：毫秒（这里为 10 分钟）
