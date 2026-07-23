@@ -23,11 +23,5 @@ public interface StudentMapper {
     @DS("Student")
     List<Student> selectByCursor(Integer cursor, Integer size);
     @DS("Student")
-    @Insert("<script>" +
-            "INSERT INTO student (student_no, name, sex, age, version) VALUES " +
-            "<foreach collection='batch' item='s' separator=','>" +
-            "(#{s.studentNo}, #{s.name}, #{s.sex}, #{s.age}, 0)" +
-            "</foreach>" +
-            "</script>")
     int batchInsert(@Param("batch") List<Student> batch);
 }

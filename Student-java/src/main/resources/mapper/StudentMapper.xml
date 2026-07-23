@@ -31,4 +31,11 @@
         ORDER BY id ASC
         LIMIT #{size}
     </select>
+
+    <insert id="batchInsert" >
+        INSERT INTO student (student_no, name, sex, age, version) VALUES
+        <foreach collection="batch" item="s" separator=",">
+            (#{s.studentNo}, #{s.name}, #{s.sex}, #{s.age}, 0)
+        </foreach>
+    </insert>
 </mapper>
