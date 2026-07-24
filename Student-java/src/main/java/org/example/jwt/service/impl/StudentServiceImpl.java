@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override//实现StudentService接口的方法
-    public Student findByIdService(Integer id) {return studentMapper.findByIdMapper(id);}
+    public Student findByIdService(Long studentId) {return studentMapper.findByIdMapper(studentId);}
     @Override//实现StudentService接口的方法
     public List<Student> findByNameService(String name) {return studentMapper.findByNameMapper(name);}
     @Override//实现StudentService接口的方法
@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
         if (hasMore) {
             list = list.subList(0, size);
         }
-        Long nextCursor = list.isEmpty() ? null : list.get(list.size() - 1).getId();
+        Long nextCursor = list.isEmpty() ? null : list.get(list.size() - 1).getStudentId();
         return new PageResult<>(list, nextCursor, hasMore);
     }
 }

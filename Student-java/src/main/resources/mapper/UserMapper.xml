@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.jwt.mapper.UserMapper">
-    <select id="findByUsername" resultType="org.example.jwt.entity.User">
-        SELECT id, username, password FROM user WHERE username = #{username}
+    <resultMap id="UserResultMap" type="org.example.jwt.entity.User">
+        <id property="userId" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    <select id="findByUsername" resultMap="UserResultMap">
+        SELECT user_id, username, password FROM user WHERE username = #{username}
     </select>
+
     <insert id="insert" parameterType="org.example.jwt.entity.User">
         INSERT INTO user (username, password) VALUES (#{username}, #{password})
     </insert>

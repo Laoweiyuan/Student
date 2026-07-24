@@ -3,32 +3,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.jwt.mapper.StudentMapper">
     <resultMap id="StudentResultMap" type="org.example.jwt.entity.Student">
-        <id property="id" column="id"/>
+        <id property="studentId" column="student_id"/>
         <result property="name" column="name"/>
         <result property="sex" column="sex"/>
         <result property="age" column="age"/>
     </resultMap>
     <select id="findAllMapper" resultMap="StudentResultMap">
-        SELECT id, name, age, sex
+        SELECT student_id, name, age, sex
         FROM student
     </select>
     <select id="findByIdMapper" resultMap="StudentResultMap">
-        SELECT id, name, age, sex
-        FROM student WHERE id = #{id}
+        SELECT student_id, name, age, sex
+        FROM student WHERE student_id = #{studentId}
     </select>
     <select id="findByNameMapper" resultMap="StudentResultMap">
-        SELECT id, name, age, sex
+        SELECT student_id, name, age, sex
         FROM student WHERE name = #{name}
     </select>
     <select id="findSexMapper" resultMap="StudentResultMap">
-        SELECT id, name, age, sex
+        SELECT student_id, name, age, sex
         FROM student WHERE sex = #{sex}
     </select>
     <select id="selectByCursor" resultMap="StudentResultMap">
-        SELECT id, name, age, sex
+        SELECT student_id, name, age, sex
         FROM student
-        WHERE is_deleted = 0 AND id > #{cursor}
-        ORDER BY id ASC
+        WHERE is_deleted = 0 AND student_id > #{cursor}
+        ORDER BY student_id ASC
         LIMIT #{size}
     </select>
 

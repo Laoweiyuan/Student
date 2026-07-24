@@ -22,8 +22,8 @@ public class StudentController {
     public List<Student> findAll(){
         return studentService.findAllService();
     }
-    @GetMapping("/find/{id}")
-    public Student findById(@PathVariable Integer id) {return studentService.findByIdService(id);}
+    @GetMapping("/find/{studentId}")
+    public Student findById(@PathVariable Long studentId) {return studentService.findByIdService(studentId);}
     @GetMapping("/find/name/{name}")
     public List<Student> findByName(@PathVariable String name) {return studentService.findByNameService(name);}
     @GetMapping("/find/sex/{sex}")

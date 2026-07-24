@@ -14,7 +14,7 @@ public interface StudentMapper {
     List<Student> findAllMapper();
 
     @DS("Student")
-    Student findByIdMapper(Integer id);
+    Student findByIdMapper(Long studentId);
 
     @DS("Student")
     List<Student> findByNameMapper(String name);

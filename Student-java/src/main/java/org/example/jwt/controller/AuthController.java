@@ -53,7 +53,7 @@ public class AuthController {
 //        result.put("token", token);
 //        return ResponseEntity.ok(result);//23.返回token及用户信息到前端
         LoginData data = new LoginData();
-        data.setId(user.getId());
+        data.setUserId(user.getUserId());
         data.setUsername(userinfo.getUsername());
         data.setToken(token);
         Result<LoginData> result = Result.success(data);
